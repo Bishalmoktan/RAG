@@ -1,4 +1,6 @@
-FROM node:20-alpine
+FROM node:20-slim
+
+RUN apt-get update && apt-get install -y libc6 libstdc++6
 
 WORKDIR /app
 

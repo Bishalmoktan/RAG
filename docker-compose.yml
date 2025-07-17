@@ -10,14 +10,17 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  # app:
-  #   build: ./server
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     DATABASE_URL: postgres://user:pass@db:5432/ragdb
-  #   depends_on:
-  #     - db
+  app:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/ragdb
+      NODE_ENV: development
+      PORT: 3000
+      OCR_SERVICE_URL: flask-ocr:5000
+    depends_on:
+      - db
 
   flask-ocr:
     build:
