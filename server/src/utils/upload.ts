@@ -1,8 +1,10 @@
 import fs from "fs";
 import axios from "axios";
-import FormData from "form-data";
 import sharp from "sharp";
+import crypto from "crypto";
+import FormData from "form-data";
 import pdf from "pdf-parse-debugging-disabled";
+
 import config from "../config/index.js";
 
 export async function extractTextFromImageOrPdf(
@@ -18,7 +20,7 @@ export async function extractTextFromImageOrPdf(
     form.append("image", fs.createReadStream(path));
 
     const response = await axios.post(
-      `${config.service.ocr}/extract-text`,
+      `${config.service.ocr.url}/extract-text`,
       form,
       {
         headers: {
@@ -51,4 +53,11 @@ export async function extractExif(path: string, mimetype: string) {
     const { exif, icc, xmpAsString, xmp, ...others } = data;
     return others;
   }
+}
+
+export async function getFileHash(filePath: string) {
+  const fileBuffer = await fs.promises.readFile(filePath);
+  const hashSum = crypto.createHash("sha256");
+  hashSum.update(fileBuffer);
+  return hashSum.digest("hex");
 }

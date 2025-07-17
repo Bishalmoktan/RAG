@@ -16,7 +16,8 @@ export async function initDatabase() {
       filename TEXT,
       text TEXT,
       exif JSONB,
-      embedding VECTOR(384)
+      embedding VECTOR(384),
+      filehash TEXT UNIQUE
     );
   `);
 

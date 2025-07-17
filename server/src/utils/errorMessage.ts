@@ -5,6 +5,7 @@ const errorResponse = {
   VALIDATION: {
     MISSING: "File is missing",
     MISSING_QUERY: "Query is missing",
+    DUPLICATE: "The embedding for the content is already available",
   },
 };
 

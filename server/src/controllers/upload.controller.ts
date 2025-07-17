@@ -18,6 +18,15 @@ export async function handleUpload(req: Request, res: Response) {
     }
     const filePath = path.resolve("uploads", file.originalname);
 
+    const rowCount = await uploadService.findEmbeddingByhash(filePath);
+
+    if (rowCount) {
+      throw new ApiError(
+        StatusCodes.CONFLICT,
+        errorResponse.VALIDATION.DUPLICATE
+      );
+    }
+
     await uploadService.handleUpload(
       file.originalname,
       filePath,
