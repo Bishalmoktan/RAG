@@ -3,9 +3,9 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
 import { ApiError } from "../utils/apiError.js";
+import { apiResponse } from "../utils/apiResponse.js";
 import { errorResponse } from "../utils/errorMessage.js";
 import * as uploadService from "../services/upload.service.js";
-import { apiResponse } from "../utils/apiResponse.js";
 
 export async function handleUpload(req: Request, res: Response) {
   try {

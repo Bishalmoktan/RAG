@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import { upload } from "../middlewares/multer.js";
 import * as uploadController from "../controllers/upload.controller.js";
 import * as searchController from "../controllers/search.controller.js";

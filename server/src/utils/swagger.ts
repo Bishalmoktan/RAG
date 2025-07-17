@@ -1,6 +1,7 @@
+import path from "path";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-import path from "path";
+
 import config from "../config/index.js";
 
 const options: swaggerJSDoc.Options = {

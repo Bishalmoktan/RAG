@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+
 import { ApiError } from "../utils/apiError.js";
+import { apiResponse } from "../utils/apiResponse.js";
 import { errorResponse } from "../utils/errorMessage.js";
 import * as searchService from "../services/search.service.js";
-import { apiResponse } from "../utils/apiResponse.js";
 
 export async function handleSearch(req: Request, res: Response) {
   try {
